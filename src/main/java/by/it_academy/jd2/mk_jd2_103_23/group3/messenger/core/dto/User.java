@@ -8,8 +8,8 @@ public class User {
     private String password;
     private String firstName;
     private String lastName;
+    private String birthDay;
 
-    private LocalDateTime birthDay;
     private LocalDateTime registrationDate;
     private boolean isAdministrator;
 
@@ -17,7 +17,7 @@ public class User {
     }
 
     public User(String login, String password, String firstName,
-                String lastName, LocalDateTime birthDay,
+                String lastName, String birthDay,
                 LocalDateTime registrationDate, boolean isAdministrator) {
         this.login = login;
         this.password = password;
@@ -60,11 +60,11 @@ public class User {
         this.lastName = lastName;
     }
 
-    public LocalDateTime getBirthDay() {
+    public String getBirthDay() {
         return birthDay;
     }
 
-    public void setBirthDay(LocalDateTime birthDay) {
+    public void setBirthDay(String birthDay) {
         this.birthDay = birthDay;
     }
 

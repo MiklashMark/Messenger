@@ -13,6 +13,9 @@ public class User {
     private LocalDateTime registrationDate;
     private boolean isAdministrator;
 
+    public User() {
+    }
+
     public User(String login, String password, String firstName,
                 String lastName, LocalDateTime birthDay,
                 LocalDateTime registrationDate, boolean isAdministrator) {

@@ -11,7 +11,7 @@ public class User {
     private String birthDay;
 
     private LocalDateTime registrationDate;
-    private boolean isAdministrator;
+    private boolean isAdministrator = false;
 
     public User() {
     }

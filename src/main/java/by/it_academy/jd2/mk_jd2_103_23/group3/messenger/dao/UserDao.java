@@ -11,6 +11,10 @@ public class UserDao implements IUserDao {
 
     @Override
     public void save(User user) {
-        users.add(user);
+        synchronized (users) {
+            users.add(user);
+        }
     }
+
+
 }

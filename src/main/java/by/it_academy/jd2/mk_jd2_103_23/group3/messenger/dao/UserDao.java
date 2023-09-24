@@ -16,5 +16,10 @@ public class UserDao implements IUserDao {
         }
     }
 
+    @Override
+    public List<User> getUsers() {
+        return users;
+    }
+
 
 }

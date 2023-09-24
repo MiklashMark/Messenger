@@ -97,6 +97,7 @@ public class UserRegistrationService implements IUserRegistrationService {
 }
 @Override
     public User getUser() {
+        return null;
 //        return this.userDao.getUsers;
     }
 }

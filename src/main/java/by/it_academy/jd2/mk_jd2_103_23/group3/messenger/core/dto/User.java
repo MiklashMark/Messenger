@@ -16,6 +16,10 @@ public class User {
     public User() {
     }
 
+    public User(boolean isAdministrator) {
+        this.isAdministrator = isAdministrator;
+    }
+
     public User(String login, String password, String firstName,
                 String lastName, String birthDay,
                 LocalDateTime registrationDate, boolean isAdministrator) {

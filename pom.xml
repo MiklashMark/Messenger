@@ -9,8 +9,8 @@
     <packaging>war</packaging>
 
     <properties>
-        <maven.compiler.source>19</maven.compiler.source>
-        <maven.compiler.target>19</maven.compiler.target>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.tomcat.url>http://localhost:8080/manager/text</maven.tomcat.url>
         <maven.tomcat.server>TomcatServer8</maven.tomcat.server>

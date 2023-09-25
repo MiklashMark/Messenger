@@ -43,7 +43,7 @@ public class UserRegistrationService implements IUserRegistrationService {
 
         private void validateNameLanguage (String firstName, String lastName) throws ValidationException {
             if (!firstName.matches(".*[а-яА-Я].*") && !lastName.matches(".*[а-яА-Я].*")) {
-                if (firstName.matches(".*[a-zA-Z].*") || lastName.matches(".*[a-zA-Z].*")) {
+                if (!firstName.matches(".*[a-zA-Z].*") && !lastName.matches(".*[a-zA-Z].*")) {
                     throw new ValidationException("First and last names should be written in one language!");
                 }
             }

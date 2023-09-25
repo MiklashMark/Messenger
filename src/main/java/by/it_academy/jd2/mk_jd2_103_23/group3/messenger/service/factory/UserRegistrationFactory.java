@@ -11,7 +11,7 @@ public class UserRegistrationFactory {
     private UserRegistrationFactory() {
     }
 
-    public IUserRegistrationService getInstance() {
+    public static IUserRegistrationService getInstance() {
         if (instance == null) {
             synchronized (UserRegistrationFactory.class) {
                 if (instance == null) {

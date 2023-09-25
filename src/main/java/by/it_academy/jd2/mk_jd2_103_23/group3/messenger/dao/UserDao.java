@@ -7,10 +7,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserDao implements IUserDao {
+    private User admin=new User(true);
     private final List<User> users = new ArrayList<>();
 
     @Override
     public void save(User user) {
-        users.add(user);
+        synchronized (users) {
+            users.add(user);
+        }
+    }
+
+    @Override
+    public List<User> getUsers() {
+        return users;
+    }
+
+    public User getAdmin() {
+        return admin;
     }
 }

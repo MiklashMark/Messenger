@@ -1,6 +1,9 @@
 package by.it_academy.jd2.mk_jd2_103_23.group3.messenger.controllers.web.servlets;
 
 import by.it_academy.jd2.mk_jd2_103_23.group3.messenger.core.dto.User;
+import by.it_academy.jd2.mk_jd2_103_23.group3.messenger.core.exceptions.ValidationException;
+import by.it_academy.jd2.mk_jd2_103_23.group3.messenger.service.api.IUserRegistrationService;
+import by.it_academy.jd2.mk_jd2_103_23.group3.messenger.service.factory.UserRegistrationFactory;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -18,8 +21,7 @@ public class UserRegistrationServlet extends HttpServlet {
     private static final String LAST_NAME = "lastName";
     private static final String BIRTH_DAY = "birthDay";
 
-    //Service service = new Service;
-
+    private IUserRegistrationService userRegistrationService = UserRegistrationFactory.getInstance();
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -39,12 +41,15 @@ public class UserRegistrationServlet extends HttpServlet {
         user.setLastName(lastName);
         user.setBirthDay(birthDay);
 
-        /*try {
-            service.save(user);
+        try {
+            userRegistrationService.save(user);
         } catch (IllegalArgumentException e){
             resp.setStatus(500);
             resp.getWriter().write(e.getMessage());
-        }*/
+        } catch (ValidationException e) {
+            resp.setStatus(400);
+            resp.getWriter().write(e.getMessage());
+        }
     }
 }
 

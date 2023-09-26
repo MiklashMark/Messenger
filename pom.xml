@@ -16,6 +16,7 @@
         <maven.tomcat.server>TomcatServer8</maven.tomcat.server>
         <maven.tomcat.path>/${project.build.finalName}</maven.tomcat.path>
     </properties>
+
     <build>
         <plugins>
             <plugin>
@@ -23,6 +24,7 @@
                 <artifactId>tomcat7-maven-plugin</artifactId>
                 <version>2.1</version>
             </plugin>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
@@ -37,8 +39,10 @@
                     <!--<warName>${artifactId}##${version}</warName> -->
                 </configuration>
             </plugin>
+
         </plugins>
     </build>
+
     <dependencies>
         <dependency>
             <groupId>jakarta.servlet</groupId>

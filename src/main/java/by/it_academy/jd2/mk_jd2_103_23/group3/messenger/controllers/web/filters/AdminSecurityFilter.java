@@ -1,6 +1,7 @@
 package by.it_academy.jd2.mk_jd2_103_23.group3.messenger.controllers.web.filters;
 
 
+import by.it_academy.jd2.mk_jd2_103_23.group3.messenger.core.dto.User;
 import jakarta.servlet.*;
 import jakarta.servlet.annotation.WebFilter;
 import jakarta.servlet.http.HttpServletRequest;
@@ -19,8 +20,10 @@ public class AdminSecurityFilter implements Filter {
         String contextPath = req.getContextPath();
         HttpSession session = req.getSession();
         if ((session != null) && (session.getAttribute("user") != null)) {
-            //...напишите проверку что пользователь является админом
-            filterChain.doFilter(servletRequest, servletResponse);
+            User user = (User) session.getAttribute("user");
+            if (user.isAdministrator()) {
+                filterChain.doFilter(servletRequest, servletResponse);
+            }
         } else {
             // редирект на логин
             resp.sendRedirect(contextPath + "/");

@@ -43,14 +43,6 @@ public class UserRegistrationService implements IUserRegistrationService {
         userDao.save(user);
     }
 
-    @Override
-    public void validateFormatBirthDate(String birthDay) throws ValidationException {
-        String datePattern = "\\d{2}.\\d{2}.\\d{4}";
-
-        if (!birthDay.matches(datePattern)) {
-            throw new ValidationException("Invalid date format. Please use the format dd.MM.yyyy.");
-        }
-    }
 
     @Override
     public void validateNameLanguage(String firstName, String lastName) throws ValidationException {
@@ -102,16 +94,16 @@ public class UserRegistrationService implements IUserRegistrationService {
             throw new ValidationException("Password must contain at least one Russian/English letter, special symbol, and digit.");
         }
     }
-
     @Override
-    public void validateBirthDate(String birthDate) throws ValidationException {
+    public void validateFormatBirthDate(String birthDay) throws ValidationException {
         String datePattern = "\\d{2}.\\d{2}.\\d{4}";
 
-        // Проверяем, соответствует ли введенная дата паттерну
-        if (!birthDate.matches(datePattern)) {
+        if (!birthDay.matches(datePattern)) {
             throw new ValidationException("Invalid date format. Please use the format dd.MM.yyyy.");
         }
-
+    }
+    @Override
+    public void validateBirthDate(String birthDate) throws ValidationException {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
         LocalDate dateOfBirth = LocalDate.parse(birthDate, formatter);
 

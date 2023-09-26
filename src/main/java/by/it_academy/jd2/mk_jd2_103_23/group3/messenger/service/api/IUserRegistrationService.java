@@ -17,6 +17,7 @@ public interface IUserRegistrationService {
      * @return
      */
     List<User> getUser();
+
     void validateNameLanguage(String firstName, String lastName) throws ValidationException;
     void validateNameCapitalization(String firstName, String lastName) throws ValidationException;
     void validateUniqueLogin(String login, User user) throws ValidationException;

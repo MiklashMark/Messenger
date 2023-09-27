@@ -16,7 +16,9 @@ public class User {
     public User() {
     }
 
-    public User(boolean isAdministrator) {
+    public User(String login, String password, boolean isAdministrator) {
+        this.login = login;
+        this.password = password;
         this.isAdministrator = isAdministrator;
     }
 

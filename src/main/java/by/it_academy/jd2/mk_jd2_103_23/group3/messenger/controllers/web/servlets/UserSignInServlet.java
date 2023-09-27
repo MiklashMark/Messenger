@@ -1,8 +1,9 @@
 package by.it_academy.jd2.mk_jd2_103_23.group3.messenger.controllers.web.servlets;
 
+import by.it_academy.jd2.mk_jd2_103_23.group3.messenger.core.dto.Credentials;
 import by.it_academy.jd2.mk_jd2_103_23.group3.messenger.core.dto.User;
+import by.it_academy.jd2.mk_jd2_103_23.group3.messenger.core.exceptions.SignInException;
 import by.it_academy.jd2.mk_jd2_103_23.group3.messenger.service.api.IUserSignInService;
-import by.it_academy.jd2.mk_jd2_103_23.group3.messenger.service.factory.UserRegistrationFactory;
 import by.it_academy.jd2.mk_jd2_103_23.group3.messenger.service.factory.UserSignInFactory;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
@@ -18,22 +19,27 @@ public class UserSignInServlet extends HttpServlet {
 
     private IUserSignInService userSignInService = UserSignInFactory.getInstance();
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp)
+            throws ServletException, IOException {
         String login = req.getParameter(LOGIN_PARAM_NAME);
         String password = req.getParameter(PASSWORD_PARAM_NAME);
 
-        User user = new User();
-        user.setLogin(login);
-        user.setPassword(password);
+        Credentials credentials = new Credentials(login,password);
 
         try {
-            if(userSignInService.isRightLogin(user) &&
-                    userSignInService.isRightPassword(user)){
+            if(userSignInService.signIn(credentials)) {
+                User user = userSignInService.getUser();
+
                 HttpSession session = req.getSession();
                 session.setAttribute("user", user);
+
             }
-        } catch (Exception e) {
-            throw new RuntimeException(e);
+        } catch (IllegalArgumentException e) {
+            resp.setStatus(500);
+            resp.getWriter().write(e.getMessage());
+        } catch (SignInException e) {
+            resp.setStatus(400);
+            resp.getWriter().write(e.getMessage());
         }
     }
 }

@@ -17,6 +17,11 @@ public class UserRegistrationService implements IUserRegistrationService {
         this.userDao = userDao;
     }
 
+    @Override
+    public List<User> getUser() {
+        return this.userDao.getUsers();
+    }
+
 
     @Override
     public void save(User user) throws ValidationException {
@@ -113,11 +118,5 @@ public class UserRegistrationService implements IUserRegistrationService {
         if (age.getYears() < 12) {
             throw new ValidationException("Age must be greater than or equal to 12 years.");
         }
-    }
-
-
-    @Override
-    public List<User> getUser() {
-        return this.userDao.getUsers();
     }
 }

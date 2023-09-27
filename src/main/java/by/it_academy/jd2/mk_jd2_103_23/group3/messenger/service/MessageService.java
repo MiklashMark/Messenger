@@ -41,4 +41,9 @@ public class MessageService implements IMessageService {
     public Map<User, List<Message>> getMessages() {
        return messageDao.getUsersMessages();
     }
+
+    @Override
+    public void addRegisteredUser(User user) {
+        messageDao.addUser(user);
+    }
 }

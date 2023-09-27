@@ -33,10 +33,12 @@ public class MessageServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        HttpSession session = req.getSession();
-        User currentUser = (User) session.getAttribute("user");
         String message = req.getParameter(TEXT_PARAM_NAME);
         String user = req.getParameter(USER_PARAM_NAME);
+
+        HttpSession session = req.getSession();
+        User currentUser = (User) session.getAttribute("user");
+
         try {
             messageService.sendMessage(user, message, currentUser);
         } catch (IllegalArgumentException e) {

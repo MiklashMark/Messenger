@@ -19,6 +19,7 @@ public class AdminSecurityFilter implements Filter {
         HttpServletResponse resp = (HttpServletResponse) servletResponse;
         String contextPath = req.getContextPath();
         HttpSession session = req.getSession();
+
         if ((session != null) && (session.getAttribute("user") != null)) {
             User user = (User) session.getAttribute("user");
             if (user.isAdministrator()) {

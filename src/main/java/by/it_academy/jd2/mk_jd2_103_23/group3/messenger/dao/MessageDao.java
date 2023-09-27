@@ -6,6 +6,7 @@ import by.it_academy.jd2.mk_jd2_103_23.group3.messenger.core.dto.User;
 import by.it_academy.jd2.mk_jd2_103_23.group3.messenger.core.exceptions.MessageException;
 import by.it_academy.jd2.mk_jd2_103_23.group3.messenger.dao.api.IMessageDao;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -29,5 +30,10 @@ public class MessageDao implements IMessageDao {
     @Override
     public Map<User, List<Message>> getUsersMessages() {
         return usersMessages;
+    }
+
+    @Override
+    public void addUser(User user) {
+        usersMessages.put(user, new ArrayList<>());
     }
 }

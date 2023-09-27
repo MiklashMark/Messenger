@@ -3,7 +3,9 @@ package by.it_academy.jd2.mk_jd2_103_23.group3.messenger.service;
 import by.it_academy.jd2.mk_jd2_103_23.group3.messenger.core.dto.User;
 import by.it_academy.jd2.mk_jd2_103_23.group3.messenger.core.exceptions.ValidationException;
 import by.it_academy.jd2.mk_jd2_103_23.group3.messenger.dao.api.IUserDao;
+import by.it_academy.jd2.mk_jd2_103_23.group3.messenger.service.api.IMessageService;
 import by.it_academy.jd2.mk_jd2_103_23.group3.messenger.service.api.IUserRegistrationService;
+import by.it_academy.jd2.mk_jd2_103_23.group3.messenger.service.factory.MessageServiceFactory;
 
 import java.time.LocalDate;
 import java.time.Period;
@@ -12,6 +14,7 @@ import java.util.List;
 
 public class UserRegistrationService implements IUserRegistrationService {
     private IUserDao userDao;
+    private IMessageService messageService = MessageServiceFactory.getInstance();
 
     public UserRegistrationService(IUserDao userDao) {
         this.userDao = userDao;
@@ -21,6 +24,8 @@ public class UserRegistrationService implements IUserRegistrationService {
     public List<User> getUser() {
         return this.userDao.getUsers();
     }
+
+
 
 
     @Override
@@ -45,7 +50,9 @@ public class UserRegistrationService implements IUserRegistrationService {
         validateFormatBirthDate(birthDay);
         validateBirthDate(birthDay);
 
+        messageService.addRegisteredUser(user);
         userDao.save(user);
+
     }
 
 

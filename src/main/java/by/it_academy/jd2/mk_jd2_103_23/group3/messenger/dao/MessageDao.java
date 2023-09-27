@@ -12,5 +12,4 @@ import java.util.Map;
 
 public class MessageDao implements IMessageDao {
     private Map<User, List<Message>> userMessages = new HashMap<>();
-
 }

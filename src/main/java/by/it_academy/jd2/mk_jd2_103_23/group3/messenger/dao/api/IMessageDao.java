@@ -8,9 +8,5 @@ import java.util.List;
 
 public interface IMessageDao {
 
-    void save(Message message);
-
-    List <Message> getMessage();
-
 }
 

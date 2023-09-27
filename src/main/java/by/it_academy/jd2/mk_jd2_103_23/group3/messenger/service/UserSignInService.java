@@ -41,15 +41,15 @@ public class UserSignInService implements IUserSignInService {
                 return true;
             }
         }
-
         throw new SignInException("There's no users with this login! Try again.");
     }
 
     @Override
     public boolean isCorrectPassword(Credentials credentials) throws SignInException {
-        if (!user.getPassword().equals(credentials.getPassword())) {
-            throw new SignInException("Incorrect password! Try again.");
-        } return true;
+        if (user.getPassword().equals(credentials.getPassword())) {
+            return true;
+        };
+        throw new SignInException("Incorrect password! Try again.");
     }
 
 

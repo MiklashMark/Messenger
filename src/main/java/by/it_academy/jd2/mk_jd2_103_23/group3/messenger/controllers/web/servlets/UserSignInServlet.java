@@ -8,6 +8,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 
@@ -24,5 +25,15 @@ public class UserSignInServlet extends HttpServlet {
         User user = new User();
         user.setLogin(login);
         user.setPassword(password);
+
+        try {
+            if(userSignInService.isRightLogin(user) &&
+                    userSignInService.isRightPassword(user)){
+                HttpSession session = req.getSession();
+                session.setAttribute("user", user);
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 }

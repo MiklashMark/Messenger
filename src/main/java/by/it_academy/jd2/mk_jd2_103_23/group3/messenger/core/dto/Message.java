@@ -5,18 +5,18 @@ import java.time.LocalDateTime;
 
 public class Message {
     private LocalDateTime time;
-    private User from;
-    private User to;
-    private String text;
+    private String from;
+    private String to;
+    private String message;
 
     public Message() {
     }
 
-    public Message(LocalDateTime time, User from, User to, String text) {
+    public Message(LocalDateTime time, String  from, String to, String text) {
         this.time = time;
         this.from = from;
         this.to = to;
-        this.text = text;
+        this.message = text;
     }
 
     public LocalDateTime getTime() {
@@ -27,28 +27,28 @@ public class Message {
         this.time = time;
     }
 
-    public User getFrom() {
+    public String getFrom() {
         return from;
     }
 
-    public void setFrom(User from) {
+    public void setFrom(String from) {
         this.from = from;
     }
 
-    public User getTo() {
+    public String getTo() {
         return to;
     }
 
-    public void setTo(User to) {
+    public void setTo(String to) {
         this.to = to;
     }
 
-    public String getText() {
-        return text;
+    public String getMessage() {
+        return message;
     }
 
-    public void setText(String text) {
-        this.text = text;
+    public void setMessage(String message) {
+        this.message = message;
     }
 
     @Override
@@ -61,7 +61,7 @@ public class Message {
         if (time != null ? !time.equals(message.time) : message.time != null) return false;
         if (from != null ? !from.equals(message.from) : message.from != null) return false;
         if (to != null ? !to.equals(message.to) : message.to != null) return false;
-        return text != null ? text.equals(message.text) : message.text == null;
+        return this.message != null ? this.message.equals(message.message) : message.message == null;
     }
 
     @Override
@@ -69,7 +69,7 @@ public class Message {
         int result = time != null ? time.hashCode() : 0;
         result = 31 * result + (from != null ? from.hashCode() : 0);
         result = 31 * result + (to != null ? to.hashCode() : 0);
-        result = 31 * result + (text != null ? text.hashCode() : 0);
+        result = 31 * result + (message != null ? message.hashCode() : 0);
         return result;
     }
 
@@ -79,7 +79,7 @@ public class Message {
                 "time=" + time +
                 ", from=" + from +
                 ", to=" + to +
-                ", text='" + text + '\'' +
+                ", text='" + message + '\'' +
                 '}';
     }
 }

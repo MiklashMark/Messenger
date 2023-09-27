@@ -12,4 +12,14 @@ import java.util.Map;
 
 public class MessageDao implements IMessageDao {
     private Map<User, List<Message>> userMessages = new HashMap<>();
+
+    @Override
+    public void addMessage(String login, String message) {
+
+    }
+
+    @Override
+    public List<Message> getMessages() {
+        return null;
+    }
 }

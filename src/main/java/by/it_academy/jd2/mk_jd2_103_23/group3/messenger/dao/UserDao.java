@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserDao implements IUserDao {
-    private User admin=new User(true);
+    private User admin = new User("admin", "admin", true);
     private final List<User> users = new ArrayList<>();
 
     @Override

@@ -9,7 +9,7 @@ import by.it_academy.jd2.mk_jd2_103_23.group3.messenger.service.api.IMessageServ
 public class MessageService implements IMessageService {
     private IMessageDao messageDao;
 
-    public  MessageService(IMessageDao messageDao){
+    public MessageService(IMessageDao messageDao) {
         this.messageDao = messageDao;
     }
 
@@ -22,3 +22,4 @@ public class MessageService implements IMessageService {
     public void send(Message message) {
 
     }
+}

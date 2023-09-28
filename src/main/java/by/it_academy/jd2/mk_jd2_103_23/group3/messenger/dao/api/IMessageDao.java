@@ -12,6 +12,7 @@ import java.util.Map;
 public interface IMessageDao {
     void addMessage(String login, Message message) throws MessageException;
     Map<User, List<Message>> getUsersMessages();
+    List<Message> getUserMessages(User user);
     void addUser( User user);
 }
 

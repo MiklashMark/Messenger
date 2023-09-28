@@ -34,6 +34,11 @@ public class MessageDao implements IMessageDao {
     }
 
     @Override
+    public List<Message> getUserMessages(User user) {
+        return usersMessages.get(user);
+    }
+
+    @Override
     public void addUser(User user) {
         usersMessages.put(user, new ArrayList<>());
     }

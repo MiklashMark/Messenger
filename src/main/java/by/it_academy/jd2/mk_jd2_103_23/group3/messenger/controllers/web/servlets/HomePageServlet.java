@@ -14,6 +14,8 @@ import java.io.IOException;
 
 @WebServlet (urlPatterns = "/api")
 public class HomePageServlet extends HttpServlet {
+    private static final String SIGN_IN_PARAM_NAME = "signIn";
+    private static final String SIGN_UP_PARAM_NAME = "signUp";
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.getRequestDispatcher("/ui/homePage.jsp").forward(req,resp);
@@ -21,6 +23,12 @@ public class HomePageServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        if (req.getParameter(SIGN_UP_PARAM_NAME) != null) {
+            resp.sendRedirect(req.getContextPath() + "/api/user");
+        }
 
+        if (req.getParameter(SIGN_IN_PARAM_NAME) != null) {
+            resp.sendRedirect(req.getContextPath() + "/api/login");
+        }
     }
 }

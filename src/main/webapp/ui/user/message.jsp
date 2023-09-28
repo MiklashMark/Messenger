@@ -18,7 +18,7 @@
         <div> <input class="form-input" type="text" name="login"
                      placeholder="Login (to)"> </div><br>
         <label>Text:</label><br>
-        <div> <textarea class="form-textarea" name="text"
+        <div> <textarea class="form-textarea" name="message"
                         placeholder="Write a message"></textarea></div>
 
         <button type="submit">Send</button>

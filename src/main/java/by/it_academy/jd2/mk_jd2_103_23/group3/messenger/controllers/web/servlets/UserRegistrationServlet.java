@@ -15,7 +15,7 @@ import java.io.IOException;
 @WebServlet(urlPatterns = "/api/user")
 public class UserRegistrationServlet extends HttpServlet {
 
-    private static final String LOGIN_NAVE = "login";
+    private static final String LOGIN_NAME = "login";
     private static final String PASSWORD_NAME = "password";
     private static final String FIRST_NAME = "firstName";
     private static final String LAST_NAME = "lastName";
@@ -24,11 +24,16 @@ public class UserRegistrationServlet extends HttpServlet {
     private IUserRegistrationService userRegistrationService = UserRegistrationFactory.getInstance();
 
     @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.getRequestDispatcher("/ui/signUp.jsp").forward(req, resp);
+    }
+
+    @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("UTF-8");
         resp.setContentType("text/html; charset=utf-8");
 
-        String login = req.getParameter(LOGIN_NAVE);
+        String login = req.getParameter(LOGIN_NAME);
         String password = req.getParameter(PASSWORD_NAME);
         String firstName = req.getParameter(FIRST_NAME);
         String lastName = req.getParameter(LAST_NAME);

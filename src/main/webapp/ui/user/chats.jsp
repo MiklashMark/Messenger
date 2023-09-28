@@ -11,9 +11,16 @@
 </head>
 
 <body>
-<h1>Incoming messages</h1>
-<form action="${pageContext.request.contextPath}/ui/users/message.jsp" method="POST">
-    <p><button type="submit">Write a message</button></p>
-</form>
-</body>
+    <h1>Incoming messages</h1>
+    <form action="${pageContext.request.contextPath}/ui/user/message.jsp" method="POST">
+
+        <p>Incoming messages for
+        <%= ((by.it_academy.jd2.mk_jd2_103_23.group3.messenger.core.dto.User)
+        request.getSession().getAttribute("user")).getFirstName() %>
+        <%= ((by.it_academy.jd2.mk_jd2_103_23.group3.messenger.core.dto.User)
+        request.getSession().getAttribute("user")).getLastName() %>:</p>
+
+        <p><button type="submit">Write a message</button></p>
+    </form>
+    </body>
 </html>

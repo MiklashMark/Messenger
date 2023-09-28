@@ -7,22 +7,22 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Форма для отправки сообщения</title>
+    <title>Write a message</title>
 </head>
 
 <body>
 <div class="form">
-    <h1>Написать сообщение</h1>
+    <h1>Write a message</h1>
     <form action="${pageContext.request.contextPath}/api/message" method="POST">
-        <label>Кому:</label><br>
+        <label>To:</label><br>
         <div> <input class="form-input" type="text" name="login"
-                     placeholder="Логин адресата"> </div><br>
-        <label>Текст:</label><br>
-        <div> <textarea class="form-textarea" name="text"
-                        placeholder="Введите сообщение"></textarea></div>
+                     placeholder="Login (to)"> </div><br>
+        <label>Text:</label><br>
+        <div> <textarea class="form-textarea" name="message"
+                        placeholder="Write a message"></textarea></div>
 
-        <button type="submit">Отправить</button>
-        <button type="reset">Очистить</button>
+        <button type="submit">Send</button>
+        <button type="reset">Clear</button>
     </form>
 </div>
 </body>

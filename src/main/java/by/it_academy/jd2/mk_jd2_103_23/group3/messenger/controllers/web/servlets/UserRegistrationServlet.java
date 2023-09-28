@@ -48,6 +48,7 @@ public class UserRegistrationServlet extends HttpServlet {
 
         try {
             userRegistrationService.save(user);
+            req.getRequestDispatcher("/ui/signIn.jsp").forward(req, resp);
         } catch (IllegalArgumentException e){
             resp.setStatus(500);
             resp.getWriter().write(e.getMessage());

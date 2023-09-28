@@ -10,9 +10,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class MessageDao implements IMessageDao {
-    private Map<User, List<Message>> usersMessages = new HashMap<>();
+    private Map<User, List<Message>> usersMessages = new ConcurrentHashMap<>();
 
     @Override
     public void addMessage(String login, Message message) throws MessageException {

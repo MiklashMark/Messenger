@@ -7,22 +7,22 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Авторизация</title>
+    <title>Log in to your account</title>
 </head>
 
 <body>
-<h1>Авторизация</h1>
+<h1>Log in to your account</h1>
 <form action="${pageContext.request.contextPath}/api/login" method="POST">
     <fieldset>
-        <legend>Логин и пароль</legend>
+        <legend>Login and password</legend>
         <div> <input class="form-input" type="text" name="login"
-                     placeholder="Введите логин"> </div>
+                     placeholder="Enter your login"> </div>
         <div> <input class="form-input" type="password" name="password"
-                     placeholder="Введите пароль"> </div>
+                     placeholder="Enter your password"> </div>
     </fieldset>
-    <p><button type="submit">Войти</button>
-        <button type="reset">Очистить</button></p>
-    <a href="${pageContext.request.contextPath}/api/user">Создайте аккаунт, это легко</a>
+    <p><button type="submit">Sign In</button>
+        <button type="reset">Clear</button></p>
+    <a href="${pageContext.request.contextPath}/api/user">Create an account, it's easy</a>
 </form>
 </body>
 </html>

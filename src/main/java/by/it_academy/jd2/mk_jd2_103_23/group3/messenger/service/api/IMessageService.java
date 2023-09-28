@@ -11,5 +11,6 @@ import java.util.Map;
 public interface IMessageService {
     void sendMessage(String login, String message, User user) throws MessageException;
     Map<User, List<Message>> getMessages();
+    List<Message> getUserMessages(User user);
     void addRegisteredUser(User user);
 }

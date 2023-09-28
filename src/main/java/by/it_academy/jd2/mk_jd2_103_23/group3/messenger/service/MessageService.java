@@ -43,6 +43,11 @@ public class MessageService implements IMessageService {
     }
 
     @Override
+    public List<Message> getUserMessages(User user) {
+       return messageDao.getUserMessages(user);
+    }
+
+    @Override
     public void addRegisteredUser(User user) {
         messageDao.addUser(user);
     }

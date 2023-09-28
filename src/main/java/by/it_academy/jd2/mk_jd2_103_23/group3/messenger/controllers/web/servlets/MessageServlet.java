@@ -24,18 +24,13 @@ public class MessageServlet extends HttpServlet {
     private IMessageService messageService = MessageServiceFactory.getInstance();
     private HttpSession session;
 
-
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         session = req.getSession();
         User user = (User)session.getAttribute("user");
         messageService.getUserMessages(user);
-    }
-  @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.getRequestDispatcher("/ui/user/chats.jsp").forward(req, resp);
     }
-
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

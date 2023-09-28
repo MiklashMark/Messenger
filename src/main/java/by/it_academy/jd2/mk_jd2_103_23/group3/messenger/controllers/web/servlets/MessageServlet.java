@@ -22,12 +22,18 @@ public class MessageServlet extends HttpServlet {
     private static final String USER_PARAM_NAME = "login";
 
     private IMessageService messageService = MessageServiceFactory.getInstance();
+    private HttpSession session;
 
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        var writer = resp.getWriter();
-        writer.write(messageService.getMessages().size());
+        session = req.getSession();
+        User user = (User)session.getAttribute("user");
+        messageService.getUserMessages(user);
+    }
+  @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.getRequestDispatcher("/ui/user/chats.jsp").forward(req, resp);
     }
 
 
@@ -36,7 +42,7 @@ public class MessageServlet extends HttpServlet {
         String message = req.getParameter(TEXT_PARAM_NAME);
         String user = req.getParameter(USER_PARAM_NAME);
 
-        HttpSession session = req.getSession();
+        session = req.getSession();
         User currentUser = (User) session.getAttribute("user");
 
         try {
@@ -51,3 +57,7 @@ public class MessageServlet extends HttpServlet {
     }
 }
 
+
+
+
+    

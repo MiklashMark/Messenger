@@ -43,6 +43,7 @@ public class MessageServlet extends HttpServlet {
 
         try {
             messageService.sendMessage(user, message, currentUser);
+            req.getRequestDispatcher("/ui/user/message.jsp").forward(req, resp);
         } catch (IllegalArgumentException e) {
             resp.setStatus(500);
             resp.getWriter().write(e.getMessage());

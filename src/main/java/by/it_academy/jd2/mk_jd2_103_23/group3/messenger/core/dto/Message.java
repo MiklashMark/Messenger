@@ -2,6 +2,7 @@
 package by.it_academy.jd2.mk_jd2_103_23.group3.messenger.core.dto;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class Message {
     private LocalDateTime time;
@@ -21,6 +22,11 @@ public class Message {
 
     public LocalDateTime getTime() {
         return time;
+    }
+
+    public String getTimeAsString() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMMM yyyy HH:mm:ss");
+        return time.format(formatter);
     }
 
     public void setTime(LocalDateTime time) {

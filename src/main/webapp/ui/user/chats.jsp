@@ -15,10 +15,12 @@
     <form action="${pageContext.request.contextPath}/ui/user/message.jsp" method="POST">
 
         <p>Incoming messages for
-            <c:out value="${user.getLogin()}"/>
+            <c:out value="${user.getLogin()}"/></br>
 
-         <c:forEach items="${messages}" var="item" >
-             <c:out value="${item}"/>
+         <c:forEach items="${messages}" var="item" > </br>
+             <c:out value="${item.getTimeAsString()}"/></br>
+             <c:out value="${item.from}"/></br>
+             <c:out value="${item.message}"/></br>
          </c:forEach>
         </p>
 

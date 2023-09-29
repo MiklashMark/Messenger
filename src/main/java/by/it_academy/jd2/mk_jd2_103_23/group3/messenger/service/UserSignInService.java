@@ -1,15 +1,19 @@
 package by.it_academy.jd2.mk_jd2_103_23.group3.messenger.service;
 
 import by.it_academy.jd2.mk_jd2_103_23.group3.messenger.core.dto.Credentials;
+import by.it_academy.jd2.mk_jd2_103_23.group3.messenger.core.dto.Message;
 import by.it_academy.jd2.mk_jd2_103_23.group3.messenger.core.dto.User;
 import by.it_academy.jd2.mk_jd2_103_23.group3.messenger.core.exceptions.SignInException;
 import by.it_academy.jd2.mk_jd2_103_23.group3.messenger.dao.api.IUserDao;
+import by.it_academy.jd2.mk_jd2_103_23.group3.messenger.service.api.IMessageService;
 import by.it_academy.jd2.mk_jd2_103_23.group3.messenger.service.api.IUserSignInService;
+import by.it_academy.jd2.mk_jd2_103_23.group3.messenger.service.factory.MessageServiceFactory;
 
 import java.util.List;
 
 public class UserSignInService implements IUserSignInService {
     private IUserDao userDao;
+    private IMessageService messageService = MessageServiceFactory.getInstance();
 
     private User user;
 
@@ -50,5 +54,10 @@ public class UserSignInService implements IUserSignInService {
             return true;
         };
         throw new SignInException("Incorrect password! Try again.");
+    }
+
+    @Override
+    public List<Message> getUserMessages(User user) {
+       return messageService.getUserMessages(user);
     }
 }

@@ -18,7 +18,6 @@ public class StatisticsServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         int countActiveUser = UserListener.getActiveUsers();
-
         PrintWriter writer = resp.getWriter();
         writer.write("<p> Количесто " + countActiveUser + "</p>");
     }

@@ -40,7 +40,7 @@ public class UserSignInServlet extends HttpServlet {
 
                 HttpSession session = req.getSession();
                 session.setAttribute("user", user);
-                req.getRequestDispatcher("/ui/user/chats.jsp").forward(req, resp);
+                req.getRequestDispatcher("/api/message").forward(req, resp);
             }
         } catch (IllegalArgumentException e) {
             resp.setStatus(500);

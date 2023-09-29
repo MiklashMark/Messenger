@@ -1,10 +1,8 @@
-
 package by.it_academy.jd2.mk_jd2_103_23.group3.messenger.controllers.web.servlets;
 
-
+import by.it_academy.jd2.mk_jd2_103_23.group3.messenger.core.dto.Message;
 import by.it_academy.jd2.mk_jd2_103_23.group3.messenger.core.dto.User;
 import by.it_academy.jd2.mk_jd2_103_23.group3.messenger.core.exceptions.MessageException;
-import by.it_academy.jd2.mk_jd2_103_23.group3.messenger.core.exceptions.ValidationException;
 import by.it_academy.jd2.mk_jd2_103_23.group3.messenger.service.api.IMessageService;
 import by.it_academy.jd2.mk_jd2_103_23.group3.messenger.service.factory.MessageServiceFactory;
 import jakarta.servlet.ServletException;
@@ -28,7 +26,10 @@ public class MessageServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         session = req.getSession();
         User user = (User)session.getAttribute("user");
-        messageService.getUserMessages(user);
+
+//      Передаем List<Message> и объект User chats.jsp для вывода
+        req.setAttribute("messages", messageService.getUserMessages(user));
+        req.setAttribute("user", user);
         req.getRequestDispatcher("/ui/user/chats.jsp").forward(req, resp);
     }
 

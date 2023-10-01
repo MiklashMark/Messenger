@@ -13,4 +13,6 @@ public interface IMessageService {
     Map<User, List<Message>> getMessages();
     List<Message> getUserMessages(User user);
     void addRegisteredUser(User user);
+
+    long getCount();
 }

@@ -38,6 +38,11 @@ public class MessageService implements IMessageService {
     }
 
     @Override
+    public long getCount(){
+        return this.messageDao.getCount();
+    };
+
+    @Override
     public Map<User, List<Message>> getMessages() {
        return messageDao.getUsersMessages();
     }

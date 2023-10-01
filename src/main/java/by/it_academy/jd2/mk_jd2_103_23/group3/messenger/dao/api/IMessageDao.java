@@ -14,5 +14,7 @@ public interface IMessageDao {
     Map<User, List<Message>> getUsersMessages();
     List<Message> getUserMessages(User user);
     void addUser( User user);
+
+    long getCount();
 }
 

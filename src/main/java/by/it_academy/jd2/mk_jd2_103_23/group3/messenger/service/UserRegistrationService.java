@@ -25,8 +25,10 @@ public class UserRegistrationService implements IUserRegistrationService {
         return this.userDao.getUsers();
     }
 
-
-
+    @Override
+    public long getCount() {
+        return this.userDao.getUsers().size();
+    }
 
     @Override
     public void save(User user) throws ValidationException {
@@ -54,6 +56,7 @@ public class UserRegistrationService implements IUserRegistrationService {
         userDao.save(user);
 
     }
+
 
 
     @Override

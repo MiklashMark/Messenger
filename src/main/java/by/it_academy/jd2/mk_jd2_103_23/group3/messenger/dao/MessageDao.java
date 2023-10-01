@@ -29,6 +29,15 @@ public class MessageDao implements IMessageDao {
     }
 
     @Override
+    public long getCount() {
+        return this.usersMessages.values()
+                .stream()
+                .mapToInt(List::size)
+                .sum();
+    }
+
+
+    @Override
     public Map<User, List<Message>> getUsersMessages() {
         return usersMessages;
     }
@@ -42,4 +51,6 @@ public class MessageDao implements IMessageDao {
     public void addUser(User user) {
         usersMessages.put(user, new ArrayList<>());
     }
+
+
 }

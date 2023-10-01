@@ -18,6 +18,7 @@ public interface IUserRegistrationService {
      */
     List<User> getUser();
 
+    long getCount();
     void validateNameLanguage(String firstName, String lastName) throws ValidationException;
     void validateNameCapitalization(String firstName, String lastName) throws ValidationException;
     void validateUniqueLogin(String login, User user) throws ValidationException;
@@ -27,4 +28,6 @@ public interface IUserRegistrationService {
     void validatePasswordComplexity(String password) throws ValidationException;
     void validateFormatBirthDate(String birthDay) throws ValidationException;
     void validateBirthDate(String birthDate) throws ValidationException;
+
+
 }

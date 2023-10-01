@@ -28,7 +28,7 @@ public class StatisticsService implements IStsatisticService {
     public Map<String, Object> getStats() {
         Map <String, Object> stats = new ConcurrentHashMap<>();
         stats.put("Количество пользователей", this.userService.getCount());
-        stats.put("Количество сообзений", this.messageService.getCount());
+        stats.put("Количество сообщений", this.messageService.getCount());
         stats.put("Количество активных сессий", this.getSessionCount());
 
         return stats;

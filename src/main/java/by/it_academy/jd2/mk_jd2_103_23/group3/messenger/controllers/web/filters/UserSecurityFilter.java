@@ -9,6 +9,9 @@ import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 
 
+/**
+ * Filter is used for restrict access to certain pages for unauthorized users;
+ */
 @WebFilter(urlPatterns = {"/ui/users/*", "/api/message"})
 public class UserSecurityFilter implements Filter {
     @Override

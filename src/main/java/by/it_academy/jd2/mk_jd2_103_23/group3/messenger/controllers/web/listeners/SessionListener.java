@@ -4,6 +4,11 @@ import by.it_academy.jd2.mk_jd2_103_23.group3.messenger.service.StatisticsServic
 import by.it_academy.jd2.mk_jd2_103_23.group3.messenger.service.api.IStsatisticService;
 import jakarta.servlet.http.*;
 
+
+/**
+ * Listener is used for retrieve current count of active users,
+ * registered users and total messages;
+ */
 public class SessionListener implements HttpSessionAttributeListener {
     private final IStsatisticService statisticService;
 

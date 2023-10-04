@@ -1,6 +1,6 @@
 package by.it_academy.jd2.mk_jd2_103_23.group3.messenger.controllers.web.servlets.api;
 
-import by.it_academy.jd2.mk_jd2_103_23.group3.messenger.core.dto.User;
+import by.it_academy.jd2.mk_jd2_103_23.group3.messenger.core.dto_n.UserCreateDTO;
 import by.it_academy.jd2.mk_jd2_103_23.group3.messenger.core.exceptions.ValidationException;
 import by.it_academy.jd2.mk_jd2_103_23.group3.messenger.service.api.IUserRegistrationService;
 import by.it_academy.jd2.mk_jd2_103_23.group3.messenger.service.factory.UserRegistrationFactory;
@@ -28,11 +28,6 @@ public class ApiUserServlet extends HttpServlet {
     private IUserRegistrationService userRegistrationService = UserRegistrationFactory.getInstance();
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher("/ui/signUp.jsp").forward(req, resp);
-    }
-
-    @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("UTF-8");
         resp.setContentType("text/html; charset=utf-8");
@@ -43,12 +38,14 @@ public class ApiUserServlet extends HttpServlet {
         String lastName = req.getParameter(LAST_NAME);
         String birthDay= req.getParameter(BIRTH_DAY);
 
-        User user = new User();
+        UserCreateDTO user = new UserCreateDTO();
         user.setLogin(login);
         user.setPassword(password);
         user.setFirstName(firstName);
         user.setLastName(lastName);
-        user.setBirthDay(birthDay);
+        if(!birthDay.isBlank()){
+            user.setBirthday(birthDay);
+        }
 
         try {
             userRegistrationService.save(user);

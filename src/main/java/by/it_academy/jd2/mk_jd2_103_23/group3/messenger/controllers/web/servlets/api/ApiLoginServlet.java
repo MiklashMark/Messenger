@@ -26,11 +26,6 @@ public class ApiLoginServlet extends HttpServlet {
     private IUserSignInService userSignInService = UserSignInFactory.getInstance();
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher("/ui/signIn.jsp").forward(req, resp);
-    }
-
-    @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
         String login = req.getParameter(LOGIN_PARAM_NAME);

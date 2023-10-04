@@ -6,6 +6,9 @@ import jakarta.servlet.annotation.WebFilter;
 import javax.xml.crypto.dsig.spec.XPathType;
 import java.io.IOException;
 
+/**
+ * Filter is used to encode text in request and response to UTF-8;
+ */
 @WebFilter(urlPatterns = {"/"})
 public class EncodingUTF8Filter implements Filter {
     @Override

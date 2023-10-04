@@ -1,4 +1,4 @@
-package by.it_academy.jd2.mk_jd2_103_23.group3.messenger.controllers.web.servlets;
+package by.it_academy.jd2.mk_jd2_103_23.group3.messenger.controllers.web.servlets.api;
 
 import by.it_academy.jd2.mk_jd2_103_23.group3.messenger.core.dto.Credentials;
 import by.it_academy.jd2.mk_jd2_103_23.group3.messenger.core.dto.User;
@@ -14,8 +14,12 @@ import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 
+/**
+ * Servlet is used for obtain users credentials,
+ * authorize user and handle users signIn;
+ * */
 @WebServlet(urlPatterns = "/api/login")
-public class UserSignInServlet extends HttpServlet {
+public class ApiLoginServlet extends HttpServlet {
     private final static String LOGIN_PARAM_NAME = "login";
     private final static String PASSWORD_PARAM_NAME = "password";
 
@@ -37,6 +41,11 @@ public class UserSignInServlet extends HttpServlet {
         try {
             if(userSignInService.signIn(credentials)) {
                 User user = userSignInService.getUser();
+                if (user.isAdministrator()) {
+                    HttpSession session = req.getSession();
+                    session.setAttribute("user", user);
+                    req.getRequestDispatcher("/ui/admin/statistics.jsp").forward(req, resp);
+                }
                 HttpSession session = req.getSession();
                 session.setAttribute("user", user);
                 session.setAttribute("messages", userSignInService.getUserMessages(user));

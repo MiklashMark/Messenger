@@ -11,6 +11,13 @@ public interface IUserSignInService {
 
     User getUser();
 
+    /**
+     * handle users SignIn;
+     * return true if user successfully signIn;
+     * @param credentials
+     * @return
+     * @throws SignInException
+     */
     boolean signIn(Credentials credentials) throws SignInException;
     boolean isCorrectLogin(Credentials credentials) throws SignInException;
     boolean isCorrectPassword(Credentials credentials) throws SignInException;

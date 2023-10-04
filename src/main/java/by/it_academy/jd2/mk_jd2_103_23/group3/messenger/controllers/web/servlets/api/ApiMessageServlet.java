@@ -1,6 +1,5 @@
-package by.it_academy.jd2.mk_jd2_103_23.group3.messenger.controllers.web.servlets;
+package by.it_academy.jd2.mk_jd2_103_23.group3.messenger.controllers.web.servlets.api;
 
-import by.it_academy.jd2.mk_jd2_103_23.group3.messenger.core.dto.Message;
 import by.it_academy.jd2.mk_jd2_103_23.group3.messenger.core.dto.User;
 import by.it_academy.jd2.mk_jd2_103_23.group3.messenger.core.exceptions.MessageException;
 import by.it_academy.jd2.mk_jd2_103_23.group3.messenger.service.api.IMessageService;
@@ -14,14 +13,22 @@ import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 
+
+/**
+ * Servlet is used for sending messages;
+ */
 @WebServlet(urlPatterns = "/api/message")
-public class MessageServlet extends HttpServlet {
+public class ApiMessageServlet extends HttpServlet {
     private static final String TEXT_PARAM_NAME = "message";
     private static final String USER_PARAM_NAME = "login";
 
     private IMessageService messageService = MessageServiceFactory.getInstance();
     private HttpSession session;
 
+
+    /**
+     * Удалить этот метод отсюда и перенести его в UI сервлет:
+     */
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         session = req.getSession();
@@ -40,6 +47,7 @@ public class MessageServlet extends HttpServlet {
 
         session = req.getSession();
         User currentUser = (User) session.getAttribute("user");
+
 
         try {
             messageService.sendMessage(user, message, currentUser);

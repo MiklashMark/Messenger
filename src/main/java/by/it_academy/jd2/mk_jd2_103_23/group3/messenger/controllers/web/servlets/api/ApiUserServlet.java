@@ -1,4 +1,4 @@
-package by.it_academy.jd2.mk_jd2_103_23.group3.messenger.controllers.web.servlets;
+package by.it_academy.jd2.mk_jd2_103_23.group3.messenger.controllers.web.servlets.api;
 
 import by.it_academy.jd2.mk_jd2_103_23.group3.messenger.core.dto.User;
 import by.it_academy.jd2.mk_jd2_103_23.group3.messenger.core.exceptions.ValidationException;
@@ -12,8 +12,12 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
+
+/**
+ * Servlet is used to handle users SignUp;
+ */
 @WebServlet(urlPatterns = "/api/user")
-public class UserRegistrationServlet extends HttpServlet {
+public class ApiUserServlet extends HttpServlet {
 
     private static final String LOGIN_NAME = "login";
     private static final String PASSWORD_NAME = "password";

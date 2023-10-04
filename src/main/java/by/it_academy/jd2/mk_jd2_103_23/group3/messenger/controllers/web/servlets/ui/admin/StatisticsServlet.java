@@ -1,4 +1,4 @@
-package by.it_academy.jd2.mk_jd2_103_23.group3.messenger.controllers.web.servlets;
+package by.it_academy.jd2.mk_jd2_103_23.group3.messenger.controllers.web.servlets.ui.admin;
 
 import by.it_academy.jd2.mk_jd2_103_23.group3.messenger.service.StatisticsService;
 import by.it_academy.jd2.mk_jd2_103_23.group3.messenger.service.api.IStsatisticService;
@@ -12,6 +12,10 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.charset.StandardCharsets;
 
+
+/**
+ * Admin servlet. Is used for setting stats attribute and dispatch req on jsp;
+ */
 @WebServlet (name = "StatisticsServlet" , urlPatterns = {"/ui/admin/statistics", "/statistics"})    // ui/admin/statistics
 public class StatisticsServlet extends HttpServlet {
 

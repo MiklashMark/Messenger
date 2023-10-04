@@ -18,6 +18,11 @@ public interface IUserRegistrationService {
      */
     List<User> getUser();
 
+
+    /**
+     * Returns total count of registered users;
+     * @return
+     */
     long getCount();
     void validateNameLanguage(String firstName, String lastName) throws ValidationException;
     void validateNameCapitalization(String firstName, String lastName) throws ValidationException;

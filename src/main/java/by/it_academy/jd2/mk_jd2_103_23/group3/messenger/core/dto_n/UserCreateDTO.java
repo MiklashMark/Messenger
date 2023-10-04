@@ -5,8 +5,9 @@ import java.time.LocalDate;
 public class UserCreateDTO {
     private String login;
     private String password;
-    private String fio;
-    private LocalDate birthday;
+    private String firstName;
+    private String lastName;
+    private String birthday;
 
     public String getLogin() {
         return login;
@@ -24,19 +25,27 @@ public class UserCreateDTO {
         this.password = password;
     }
 
-    public String getFio() {
-        return fio;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setFio(String fio) {
-        this.fio = fio;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public LocalDate getBirthday() {
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(LocalDate birthday) {
+    public void setBirthday(String birthday) {
         this.birthday = birthday;
     }
 }

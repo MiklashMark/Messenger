@@ -8,11 +8,10 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-@WebServlet(name = "MessageServlet", urlPatterns = "/ui/user/message")
-public class UiMessageServlet extends HttpServlet {
-
+@WebServlet(name = "SignInServlet", urlPatterns = "/ui/signIn")
+public class UiSignInServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher("/ui/user/chats.jsp").forward(req, resp);
+        req.getRequestDispatcher("/ui/signIn.jsp").forward(req, resp);
     }
 }

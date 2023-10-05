@@ -1,7 +1,7 @@
 package by.it_academy.jd2.mk_jd2_103_23.group3.messenger.controllers.web.servlets.api;
 
-import by.it_academy.jd2.mk_jd2_103_23.group3.messenger.core.dto.Credentials;
 import by.it_academy.jd2.mk_jd2_103_23.group3.messenger.core.dto.User;
+import by.it_academy.jd2.mk_jd2_103_23.group3.messenger.core.dto_n.UserLoginDTO;
 import by.it_academy.jd2.mk_jd2_103_23.group3.messenger.core.exceptions.SignInException;
 import by.it_academy.jd2.mk_jd2_103_23.group3.messenger.service.api.IUserSignInService;
 import by.it_academy.jd2.mk_jd2_103_23.group3.messenger.service.factory.UserSignInFactory;
@@ -31,7 +31,7 @@ public class ApiLoginServlet extends HttpServlet {
         String login = req.getParameter(LOGIN_PARAM_NAME);
         String password = req.getParameter(PASSWORD_PARAM_NAME);
 
-        Credentials credentials = new Credentials(login,password);
+        UserLoginDTO credentials = new UserLoginDTO(login,password);
 
         try {
             if(userSignInService.signIn(credentials)) {
@@ -46,12 +46,10 @@ public class ApiLoginServlet extends HttpServlet {
                 session.setAttribute("messages", userSignInService.getUserMessages(user));
                 req.getRequestDispatcher("/ui/user/chats.jsp").forward(req, resp);
             }
-        } catch (IllegalArgumentException e) {
-            resp.setStatus(500);
-            resp.getWriter().write(e.getMessage());
-        } catch (SignInException e) {
-            resp.setStatus(400);
-            resp.getWriter().write(e.getMessage());
+        } catch (RuntimeException | SignInException e){
+            req.setAttribute("error", true);
+            req.setAttribute("message", e.getMessage());
+            req.getRequestDispatcher("/ui/signIn.jsp").forward(req, resp);
         }
     }
 }

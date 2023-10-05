@@ -1,8 +1,8 @@
 package by.it_academy.jd2.mk_jd2_103_23.group3.messenger.service;
 
-import by.it_academy.jd2.mk_jd2_103_23.group3.messenger.core.dto.Credentials;
 import by.it_academy.jd2.mk_jd2_103_23.group3.messenger.core.dto.Message;
 import by.it_academy.jd2.mk_jd2_103_23.group3.messenger.core.dto.User;
+import by.it_academy.jd2.mk_jd2_103_23.group3.messenger.core.dto_n.UserLoginDTO;
 import by.it_academy.jd2.mk_jd2_103_23.group3.messenger.core.exceptions.SignInException;
 import by.it_academy.jd2.mk_jd2_103_23.group3.messenger.dao.api.IUserDao;
 import by.it_academy.jd2.mk_jd2_103_23.group3.messenger.service.api.IMessageService;
@@ -28,7 +28,7 @@ public class UserSignInService implements IUserSignInService {
     }
 
     @Override
-    public boolean signIn(Credentials credentials) throws SignInException {
+    public boolean signIn(UserLoginDTO credentials) throws SignInException {
         if (credentials.getLogin() == null || credentials.getPassword() == null) {
             throw new IllegalArgumentException("Credentials not entered! Try again.");
         }
@@ -36,7 +36,7 @@ public class UserSignInService implements IUserSignInService {
     }
 
     @Override
-    public boolean isCorrectLogin(Credentials credentials) throws SignInException {
+    public boolean isCorrectLogin(UserLoginDTO credentials) throws SignInException {
         List<User> list = userDao.getUsers();
 
         for (User u : list) {
@@ -49,7 +49,7 @@ public class UserSignInService implements IUserSignInService {
     }
 
     @Override
-    public boolean isCorrectPassword(Credentials credentials) throws SignInException {
+    public boolean isCorrectPassword(UserLoginDTO credentials) throws SignInException {
         if (user.getPassword().equals(credentials.getPassword())) {
             return true;
         };

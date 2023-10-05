@@ -24,11 +24,11 @@ public class UiHomePageServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         if (req.getParameter(SIGN_UP_PARAM_NAME) != null) {
-            resp.sendRedirect(req.getContextPath() + "/api/user");
+            resp.sendRedirect(req.getContextPath() + "/ui/signUp");
         }
 
         if (req.getParameter(SIGN_IN_PARAM_NAME) != null) {
-            resp.sendRedirect(req.getContextPath() + "/api/login");
+            resp.sendRedirect(req.getContextPath() + "/ui/signIn");
         }
     }
 }

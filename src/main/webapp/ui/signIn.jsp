@@ -22,7 +22,7 @@
     </fieldset>
     <p><button type="submit">Sign In</button>
         <button type="reset">Clear</button></p>
-    <a href="${pageContext.request.contextPath}/api/user">Create an account, it's easy</a>
+    <a href="${pageContext.request.contextPath}/ui/signUp">Create an account, it's easy</a>
 </form>
 </body>
 </html>

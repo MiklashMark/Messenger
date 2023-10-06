@@ -6,6 +6,14 @@
 >
     <display-name>Mk-JD2-103-23</display-name>
 
+    <welcome-file-list>
+        <welcome-file>homePage.jsp</welcome-file>
+    </welcome-file-list>
+
+    <listener>
+        <listener-class>by.it_academy.jd2.mk_jd2_103_23.group3.messenger.controllers.web.listeners.DefaultDataInitializer</listener-class>
+    </listener>
+
     <listener>
         <listener-class>by.it_academy.jd2.mk_jd2_103_23.group3.messenger.controllers.web.listeners.SessionListener</listener-class>
     </listener>

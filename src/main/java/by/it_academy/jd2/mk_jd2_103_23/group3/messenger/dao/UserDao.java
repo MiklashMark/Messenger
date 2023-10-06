@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserDao implements IUserDao {
-    private User admin = new User("admin", "admin", true);
     private final List<User> users = new ArrayList<>();
 
     @Override
@@ -20,9 +19,5 @@ public class UserDao implements IUserDao {
     @Override
     public List<User> getUsers() {
         return users;
-    }
-
-    public User getAdmin() {
-        return admin;
     }
 }

@@ -34,11 +34,6 @@ public class User {
         this.isAdministrator = isAdministrator;
     }
 
-    public User(String login, String password) {
-        this.login = login;
-        this.password = password;
-    }
-
     public String getLogin() {
         return login;
     }

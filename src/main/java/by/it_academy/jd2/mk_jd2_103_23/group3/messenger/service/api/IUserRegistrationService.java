@@ -1,6 +1,7 @@
 package by.it_academy.jd2.mk_jd2_103_23.group3.messenger.service.api;
 
 import by.it_academy.jd2.mk_jd2_103_23.group3.messenger.core.dto.User;
+import by.it_academy.jd2.mk_jd2_103_23.group3.messenger.core.dto_n.UserCreateDTO;
 import by.it_academy.jd2.mk_jd2_103_23.group3.messenger.core.exceptions.ValidationException;
 
 import java.util.List;
@@ -10,7 +11,7 @@ public interface IUserRegistrationService {
      * User registration validation;
      * @param user
      */
-    void save(User user) throws ValidationException;
+    void save(UserCreateDTO user) throws ValidationException;
 
     /**
      * Getting userList;
@@ -18,6 +19,11 @@ public interface IUserRegistrationService {
      */
     List<User> getUser();
 
+
+    /**
+     * Returns total count of registered users;
+     * @return
+     */
     long getCount();
     void validateNameLanguage(String firstName, String lastName) throws ValidationException;
     void validateNameCapitalization(String firstName, String lastName) throws ValidationException;

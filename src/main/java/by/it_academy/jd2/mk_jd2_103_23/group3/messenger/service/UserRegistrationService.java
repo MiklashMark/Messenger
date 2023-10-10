@@ -1,6 +1,7 @@
 package by.it_academy.jd2.mk_jd2_103_23.group3.messenger.service;
 
 import by.it_academy.jd2.mk_jd2_103_23.group3.messenger.core.dto.User;
+import by.it_academy.jd2.mk_jd2_103_23.group3.messenger.core.dto_n.UserCreateDTO;
 import by.it_academy.jd2.mk_jd2_103_23.group3.messenger.core.exceptions.ValidationException;
 import by.it_academy.jd2.mk_jd2_103_23.group3.messenger.dao.api.IUserDao;
 import by.it_academy.jd2.mk_jd2_103_23.group3.messenger.service.api.IMessageService;
@@ -8,6 +9,7 @@ import by.it_academy.jd2.mk_jd2_103_23.group3.messenger.service.api.IUserRegistr
 import by.it_academy.jd2.mk_jd2_103_23.group3.messenger.service.factory.MessageServiceFactory;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -31,29 +33,32 @@ public class UserRegistrationService implements IUserRegistrationService {
     }
 
     @Override
-    public void save(User user) throws ValidationException {
+    public void save(UserCreateDTO user) throws ValidationException {
         if (user == null) {
             throw new IllegalArgumentException("The data for registration wasn't entered!");
         }
+        User entity = new User();
 
-        String firstName = user.getFirstName();
-        String lastName = user.getLastName();
-        String login = user.getLogin();
-        String password = user.getPassword();
-        String birthDay = user.getBirthDay();
+        entity.setFirstName(user.getFirstName());
+        entity.setLastName(user.getLastName());
+        entity.setLogin(user.getLogin());
+        entity.setPassword(user.getPassword());
+        entity.setBirthDay(user.getBirthday());
+        entity.setRegistrationDate(LocalDateTime.now());
+        entity.setAdministrator(false);
 
-        validateNameLanguage(firstName, lastName);
-        validateNameCapitalization(firstName, lastName);
-        validateUniqueLogin(login, user);
-        validateLoginLength(login);
-        validateLoginNoSpace(login);
-        validatePasswordLength(password);
-        validatePasswordComplexity(password);
-        validateFormatBirthDate(birthDay);
-        validateBirthDate(birthDay);
+        validateNameLanguage(user.getFirstName(), user.getLastName());
+        validateNameCapitalization(user.getFirstName(), user.getLastName());
+        validateUniqueLogin(user.getLogin(), entity);
+        validateLoginLength(user.getLogin());
+        validateLoginNoSpace(user.getLogin());
+        validatePasswordLength(user.getPassword());
+        validatePasswordComplexity(user.getPassword());
+        validateFormatBirthDate(user.getBirthday());
+        validateBirthDate(user.getBirthday());
 
-        messageService.addRegisteredUser(user);
-        userDao.save(user);
+        messageService.addRegisteredUser(entity);
+        userDao.save(entity);
 
     }
 

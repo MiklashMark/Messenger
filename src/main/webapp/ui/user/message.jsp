@@ -11,19 +11,31 @@
 </head>
 
 <body>
-<div class="form">
-    <h1>Write a message</h1>
-    <form action="${pageContext.request.contextPath}/api/message" method="POST">
-        <label>To:</label><br>
-        <div> <input class="form-input" type="text" name="login"
-                     placeholder="Login (to)"> </div><br>
-        <label>Text:</label><br>
-        <div> <textarea class="form-textarea" name="message"
-                        placeholder="Write a message"></textarea></div>
+    <c:choose>
+        <c:when test="${requestScope.success}">
+                <p style="color:green;">Message sent successfully</p>
+        </c:when>
+        <c:when test="${requestScope.error}">
+                <p style="color:red;">${requestScope.message}</p>
+        </c:when>
+    </c:choose>
 
-        <button type="submit">Send</button>
-        <button type="reset">Clear</button>
-    </form>
-</div>
+    <div class="form">
+        <h1>Write a message</h1>
+        <form action="${pageContext.request.contextPath}/api/message" method="POST">
+            <label>To:</label><br>
+            <div> <input class="form-input" type="text" name="login"
+                         placeholder="Login (to)"> </div><br>
+            <label>Text:</label><br>
+            <div> <textarea class="form-textarea" name="message"
+                            placeholder="Write a message"></textarea></div>
+
+            <button type="submit">Send</button>
+            <button type="reset">Clear</button>
+        </form>
+    </div>
+
+    </p><input type="button" onclick="location.href='${pageContext.request.contextPath}/ui/user/message';"
+    value="Back to incoming messages"/></p>
 </body>
 </html>

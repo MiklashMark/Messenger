@@ -10,6 +10,10 @@ import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 
+/**
+ * Filter is used for limit access to admin pages
+ * Checking "user" attribute and isAdministrator flag;
+ */
 @WebFilter(urlPatterns = {"/ui/admin/*", "/api/admin/*"})
 public class AdminSecurityFilter implements Filter {
     @Override

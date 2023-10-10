@@ -1,4 +1,4 @@
-package by.it_academy.jd2.mk_jd2_103_23.group3.messenger.controllers.web.servlets;
+package by.it_academy.jd2.mk_jd2_103_23.group3.messenger.controllers.web.servlets.ui;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -13,7 +13,7 @@ import java.io.IOException;
  */
 
 @WebServlet (urlPatterns = "/api")
-public class HomePageServlet extends HttpServlet {
+public class UiHomePageServlet extends HttpServlet {
     private static final String SIGN_IN_PARAM_NAME = "signIn";
     private static final String SIGN_UP_PARAM_NAME = "signUp";
     @Override
@@ -24,11 +24,11 @@ public class HomePageServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         if (req.getParameter(SIGN_UP_PARAM_NAME) != null) {
-            resp.sendRedirect(req.getContextPath() + "/api/user");
+            resp.sendRedirect(req.getContextPath() + "/ui/signUp");
         }
 
         if (req.getParameter(SIGN_IN_PARAM_NAME) != null) {
-            resp.sendRedirect(req.getContextPath() + "/api/login");
+            resp.sendRedirect(req.getContextPath() + "/ui/signIn");
         }
     }
 }

@@ -4,6 +4,7 @@ import by.it_academy.jd2.mk_jd2_103_23.group3.messenger.core.dto.User;
 import by.it_academy.jd2.mk_jd2_103_23.group3.messenger.core.dto_n.UserCreateDTO;
 import by.it_academy.jd2.mk_jd2_103_23.group3.messenger.core.exceptions.ValidationException;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public interface IUserRegistrationService {
@@ -34,6 +35,8 @@ public interface IUserRegistrationService {
     void validatePasswordComplexity(String password) throws ValidationException;
     void validateFormatBirthDate(String birthDay) throws ValidationException;
     void validateBirthDate(String birthDate) throws ValidationException;
+
+    public LocalDate setLocalDateTimeFromString (String birthDate);
 
 
 }

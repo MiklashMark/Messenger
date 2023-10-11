@@ -62,7 +62,7 @@ public class UserDao implements IUserDao {
                 item.setPassword(rs.getString("password"));
                 item.setFirstName(rs.getString("firstname"));
                 item.setLastName(rs.getString("lastname"));
-                item.setBirthDay(rs.getTimestamp("birthday"));
+                item.setBirthDay(rs.getTimestamp("birthday").toLocalDateTime().toLocalDate());
                 item.setAdministrator(rs.getBoolean("isadministrator"));
                 item.setRegistrationDate(rs.getTimestamp("registrationdate").toLocalDateTime());
 

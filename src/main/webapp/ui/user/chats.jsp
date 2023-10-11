@@ -25,6 +25,8 @@
         </p>
 
         <p><button type="submit">Write a message</button></p>
+        </br></br>
+            <p><input type="button" onclick="location.href='${pageContext.request.contextPath}/';" value="index" /></p>
     </form>
     </body>
 </html>

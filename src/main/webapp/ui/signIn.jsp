@@ -22,7 +22,8 @@
     </fieldset>
     <p><button type="submit">Sign In</button>
         <button type="reset">Clear</button></p>
-    <a href="${pageContext.request.contextPath}/ui/signUp">Create an account, it's easy</a>
+    </br></br>
+    <p><input type="button" onclick="location.href='${pageContext.request.contextPath}/';" value="index" /></p>
 </form>
 </body>
 </html>

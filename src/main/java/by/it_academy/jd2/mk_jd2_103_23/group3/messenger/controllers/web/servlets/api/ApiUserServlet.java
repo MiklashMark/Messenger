@@ -45,7 +45,7 @@ public class ApiUserServlet extends HttpServlet {
         user.setFirstName(firstName);
         user.setLastName(lastName);
         if(!birthDay.isBlank()){
-            user.setBirthday(birthDay + " 1:1:1");
+            user.setBirthday(birthDay);
         }
 
         try {

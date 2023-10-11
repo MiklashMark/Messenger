@@ -39,13 +39,15 @@ public class UserRegistrationService implements IUserRegistrationService {
         }
         User entity = new User();
 
+
         entity.setFirstName(user.getFirstName());
         entity.setLastName(user.getLastName());
         entity.setLogin(user.getLogin());
         entity.setPassword(user.getPassword());
-        entity.setBirthDay(user.getBirthday());
         entity.setRegistrationDate(LocalDateTime.now());
         entity.setAdministrator(false);
+
+        entity.setBirthDay(setLocalDateTimeFromString(user.getBirthday()));
 
         validateNameLanguage(user.getFirstName(), user.getLastName());
         validateNameCapitalization(user.getFirstName(), user.getLastName());
@@ -54,8 +56,8 @@ public class UserRegistrationService implements IUserRegistrationService {
         validateLoginNoSpace(user.getLogin());
         validatePasswordLength(user.getPassword());
         validatePasswordComplexity(user.getPassword());
-        //validateFormatBirthDate(user.getBirthday());
-        //validateBirthDate(user.getBirthday());
+        validateFormatBirthDate(user.getBirthday());
+        validateBirthDate(user.getBirthday());
 
         messageService.addRegisteredUser(entity);
         userDao.save(entity);
@@ -133,5 +135,12 @@ public class UserRegistrationService implements IUserRegistrationService {
         if (age.getYears() < 12) {
             throw new ValidationException("Age must be greater than or equal to 12 years.");
         }
+
+    }
+    @Override
+    public LocalDate setLocalDateTimeFromString (String strDate){
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+        LocalDate dateTime = LocalDate.parse(strDate, formatter);
+        return  dateTime;
     }
 }

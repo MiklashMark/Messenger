@@ -1,14 +1,17 @@
 package by.it_academy.jd2.mk_jd2_103_23.group3.messenger.core.dto;
 
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.Objects;
+
+
 
 public class User {
     private String login;
     private String password;
     private String firstName;
     private String lastName;
-    private String birthDay;
+    private Timestamp birthDay;
 
     private LocalDateTime registrationDate;
     private boolean isAdministrator = false;
@@ -23,7 +26,7 @@ public class User {
     }
 
     public User(String login, String password, String firstName,
-                String lastName, String birthDay,
+                String lastName, Timestamp birthDay,
                 LocalDateTime registrationDate, boolean isAdministrator) {
         this.login = login;
         this.password = password;
@@ -66,11 +69,11 @@ public class User {
         this.lastName = lastName;
     }
 
-    public String getBirthDay() {
+    public Timestamp getBirthDay() {
         return birthDay;
     }
 
-    public void setBirthDay(String birthDay) {
+    public void setBirthDay(Timestamp birthDay) {
         this.birthDay = birthDay;
     }
 

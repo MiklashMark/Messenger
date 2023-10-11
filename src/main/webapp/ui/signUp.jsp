@@ -35,6 +35,8 @@ pageEncoding="UTF-8"%>
 
                 <button type="submit">Sign Up</button>
                 <button type="reset">Clear</button>
+                </br></br>
+                   <p><input type="button" onclick="location.href='${pageContext.request.contextPath}/';" value="index" /></p>
             </form>
         </div>
     </body>

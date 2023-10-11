@@ -54,8 +54,8 @@ public class UserRegistrationService implements IUserRegistrationService {
         validateLoginNoSpace(user.getLogin());
         validatePasswordLength(user.getPassword());
         validatePasswordComplexity(user.getPassword());
-        validateFormatBirthDate(user.getBirthday());
-        validateBirthDate(user.getBirthday());
+        //validateFormatBirthDate(user.getBirthday());
+        //validateBirthDate(user.getBirthday());
 
         messageService.addRegisteredUser(entity);
         userDao.save(entity);

@@ -37,5 +37,8 @@
 
     </p><input type="button" onclick="location.href='${pageContext.request.contextPath}/ui/user/message';"
     value="Back to incoming messages"/></p>
+        </br></br>
+            <p><input type="button" onclick="location.href='${pageContext.request.contextPath}/';" value="index" /></p>
+
 </body>
 </html>

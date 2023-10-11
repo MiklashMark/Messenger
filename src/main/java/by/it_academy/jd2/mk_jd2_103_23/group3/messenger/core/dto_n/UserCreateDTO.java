@@ -1,13 +1,13 @@
 package by.it_academy.jd2.mk_jd2_103_23.group3.messenger.core.dto_n;
 
-import java.time.LocalDate;
+import java.sql.Timestamp;
 
 public class UserCreateDTO {
     private String login;
     private String password;
     private String firstName;
     private String lastName;
-    private String birthday;
+    private Timestamp birthday;
 
     public String getLogin() {
         return login;
@@ -41,11 +41,11 @@ public class UserCreateDTO {
         this.lastName = lastName;
     }
 
-    public String getBirthday() {
+    public Timestamp getBirthday() {
         return birthday;
     }
 
     public void setBirthday(String birthday) {
-        this.birthday = birthday;
+        this.birthday = Timestamp.valueOf(birthday);
     }
 }

@@ -15,6 +15,6 @@ public class DefaultDataInitializer implements ServletContextListener {
 
         User admin = new User("admin", "admin", true);
 
-        userDao.save(admin);
+       // userDao.save(admin);
     }
 }

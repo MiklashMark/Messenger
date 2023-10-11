@@ -11,6 +11,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
+import java.sql.Timestamp;
 
 
 /**
@@ -44,7 +45,7 @@ public class ApiUserServlet extends HttpServlet {
         user.setFirstName(firstName);
         user.setLastName(lastName);
         if(!birthDay.isBlank()){
-            user.setBirthday(birthDay);
+            user.setBirthday(birthDay + " 1:1:1");
         }
 
         try {

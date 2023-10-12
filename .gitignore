@@ -2,3 +2,4 @@
 /.idea/
 /External Libraries/
 *.iml
+*.properties

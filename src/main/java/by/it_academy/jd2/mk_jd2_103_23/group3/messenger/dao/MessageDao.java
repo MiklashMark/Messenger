@@ -7,7 +7,6 @@ import by.it_academy.jd2.mk_jd2_103_23.group3.messenger.core.exceptions.MessageE
 import by.it_academy.jd2.mk_jd2_103_23.group3.messenger.dao.api.IMessageDao;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;

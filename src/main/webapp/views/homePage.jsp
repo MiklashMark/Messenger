@@ -21,6 +21,7 @@
         </c:if>
         <p><input type="button" onclick="location.href='${pageContext.request.contextPath}/ui/user/chats';" value="Incoming messages" /></p>
         <p><input type="button" onclick="location.href='${pageContext.request.contextPath}/ui/user/message';" value="Write message" /></p>
+        <p><input type="button" onclick="location.href='${pageContext.request.contextPath}/ui/logout';" value="Exit" /></p>
     </c:otherwise>
 </c:choose>
 </body>

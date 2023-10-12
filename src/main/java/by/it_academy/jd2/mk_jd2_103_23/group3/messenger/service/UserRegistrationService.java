@@ -43,7 +43,7 @@ public class UserRegistrationService implements IUserRegistrationService {
         entity.setLastName(user.getLastName());
         entity.setLogin(user.getLogin());
         entity.setPassword(user.getPassword());
-        entity.setBirthDay(user.getBirthday());
+        entity.setBirthDay(setLocalDateTimeFromString(user.getBirthday()));
         entity.setRegistrationDate(LocalDateTime.now());
         entity.setAdministrator(false);
 
@@ -53,7 +53,7 @@ public class UserRegistrationService implements IUserRegistrationService {
 
     }
 
-    private void validationForSignUp(UserCreateDTO user) throws ValidationException {
+    public void validationForSignUp(UserCreateDTO user) throws ValidationException {
         if (user == null) {
             throw new ValidationException("Please fill in all registration fields");
         }
@@ -80,8 +80,9 @@ public class UserRegistrationService implements IUserRegistrationService {
 
 
         for (User userTemp : getUser()) {
-            if (user.getLogin().equalsIgnoreCase(login)) {
+            if (userTemp.getLogin().equalsIgnoreCase(login)) {
                 errorsMessages.add("Login is already taken. Please, change login.");
+                break;
             }
         }
 
@@ -121,6 +122,11 @@ public class UserRegistrationService implements IUserRegistrationService {
         if (!errorsMessages.isEmpty()) {
             throw new ValidationException(errorsMessages);
         }
+    }
+    @Override
+    public LocalDate setLocalDateTimeFromString(String strDate){
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+        return LocalDate.parse(strDate, formatter);
     }
 
 }

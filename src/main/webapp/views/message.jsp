@@ -35,7 +35,10 @@
         </form>
     </div>
 
-    </p><input type="button" onclick="location.href='${pageContext.request.contextPath}/ui/user/message';"
-    value="Back to incoming messages"/></p>
+    </p><input type="button" onclick="location.href='${pageContext.request.contextPath}/';"
+    value="Home page"/></p>
+        </br></br>
+            <p><input type="button" onclick="location.href='';" value="index" /></p>
+
 </body>
 </html>

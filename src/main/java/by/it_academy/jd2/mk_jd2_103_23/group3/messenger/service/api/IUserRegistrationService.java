@@ -4,6 +4,7 @@ import by.it_academy.jd2.mk_jd2_103_23.group3.messenger.core.dto.User;
 import by.it_academy.jd2.mk_jd2_103_23.group3.messenger.core.dto_n.UserCreateDTO;
 import by.it_academy.jd2.mk_jd2_103_23.group3.messenger.core.exceptions.ValidationException;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public interface IUserRegistrationService {
@@ -19,6 +20,9 @@ public interface IUserRegistrationService {
      */
     List<User> getUser();
 
+    public void validationForSignUp(UserCreateDTO user);
+
+
 
     /**
      * Returns total count of registered users;
@@ -26,4 +30,5 @@ public interface IUserRegistrationService {
      */
     long getCount();
 
+    LocalDate setLocalDateTimeFromString(String strDate);
 }

@@ -36,15 +36,9 @@ public class ApiLoginServlet extends HttpServlet {
         try {
             if(userSignInService.signIn(credentials)) {
                 User user = userSignInService.getUser();
-                if (user.isAdministrator()) {
-                    HttpSession session = req.getSession();
-                    session.setAttribute("user", user);
-                    req.getRequestDispatcher("/ui/admin/statistics.jsp").forward(req, resp);
-                }
                 HttpSession session = req.getSession();
                 session.setAttribute("user", user);
-                session.setAttribute("messages", userSignInService.getUserMessages(user));
-                req.getRequestDispatcher("/ui/user/chats.jsp").forward(req, resp);
+                req.getRequestDispatcher("/views/homePage.jsp").forward(req, resp);
             }
         } catch (RuntimeException | SignInException e){
             req.setAttribute("error", true);

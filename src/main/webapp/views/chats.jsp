@@ -12,19 +12,19 @@
 
 <body>
     <h1>Incoming messages</h1>
-    <form action="${pageContext.request.contextPath}/ui/user/message.jsp" method="POST">
 
         <p>Incoming messages for
             <c:out value="${user.getLogin()}"/></br>
 
-         <c:forEach items="${messages}" var="item" > </br>
-             <c:out value="${item.getTimeAsString()}"/></br>
-             <c:out value="${item.from}"/></br>
-             <c:out value="${item.message}"/></br>
-         </c:forEach>
+            <c:forEach items="${requestScope.chat}"
+                       var="message">
+                <tr>
+                    <td width="20%">${message.from}</td>
+                    <td width="20%">${message.sendDate}</td>
+                    <td width="60%"><c:out value="${message.text}" escapeXml="true"/></td>
+                </tr>
+            </c:forEach>
         </p>
-
-        <p><button type="submit">Write a message</button></p>
         <p><input type="button" onclick="location.href='${pageContext.request.contextPath}/';" value="Home page" /></p>
     </form>
     </body>

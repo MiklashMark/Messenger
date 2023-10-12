@@ -7,7 +7,7 @@
     <display-name>Mk-JD2-103-23</display-name>
 
     <welcome-file-list>
-        <welcome-file>/ui/homePage.jsp</welcome-file>
+        <welcome-file>/views/homePage.jsp</welcome-file>
     </welcome-file-list>
 
     <listener>

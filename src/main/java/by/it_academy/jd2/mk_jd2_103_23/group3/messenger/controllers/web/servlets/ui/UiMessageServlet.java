@@ -13,6 +13,6 @@ public class UiMessageServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher("/ui/user/chats.jsp").forward(req, resp);
+        req.getRequestDispatcher("/views/message.jsp").forward(req, resp);
     }
 }

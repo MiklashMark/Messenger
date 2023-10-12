@@ -12,7 +12,6 @@ import java.io.IOException;
 public class UiSignUpServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher("/ui/signUp.jsp").forward(req, resp);
+        req.getRequestDispatcher("/views/signUp.jsp").forward(req, resp);
     }
-
 }

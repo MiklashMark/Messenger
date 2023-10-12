@@ -49,7 +49,7 @@ public class ApiMessageServlet extends HttpServlet {
             req.setAttribute("message",  e.getMessage());
         }
 
-        req.getRequestDispatcher("/ui/user/message.jsp").forward(req, resp);
+        req.getRequestDispatcher("/views/message.jsp").forward(req, resp);
     }
 }
 

@@ -32,7 +32,7 @@ public class StatisticsServlet extends HttpServlet {
 
         req.setAttribute("stats", statisticsService.getStats());
 
-        req.getRequestDispatcher("ui/admin/statistics.jsp").forward(req, resp);
+        req.getRequestDispatcher("/views/statistics.jsp").forward(req, resp);
 
     }
 }

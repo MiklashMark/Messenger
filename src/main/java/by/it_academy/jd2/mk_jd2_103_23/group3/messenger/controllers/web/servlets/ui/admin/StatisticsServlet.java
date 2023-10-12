@@ -9,14 +9,13 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.nio.charset.StandardCharsets;
 
 
 /**
  * Admin servlet. Is used for setting stats attribute and dispatch req on jsp;
  */
-@WebServlet (name = "StatisticsServlet" , urlPatterns = {"/ui/admin/statistics", "/statistics"})    // ui/admin/statistics
+@WebServlet (name = "StatisticsServlet" , urlPatterns = "/ui/admin/statistics")    // ui/admin/statistics
 public class StatisticsServlet extends HttpServlet {
 
     private final IStsatisticService statisticsService;

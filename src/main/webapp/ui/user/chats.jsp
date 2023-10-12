@@ -25,6 +25,7 @@
         </p>
 
         <p><button type="submit">Write a message</button></p>
+        <p><input type="button" onclick="location.href='${pageContext.request.contextPath}/';" value="Home page" /></p>
     </form>
     </body>
 </html>

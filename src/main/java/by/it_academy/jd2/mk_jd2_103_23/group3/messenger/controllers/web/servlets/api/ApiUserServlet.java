@@ -50,7 +50,7 @@ public class ApiUserServlet extends HttpServlet {
 
         try {
             userRegistrationService.save(user);
-            req.getRequestDispatcher("/ui/signIn.jsp").forward(req, resp);
+            req.getRequestDispatcher("/views/signIn.jsp").forward(req, resp);
         } catch (ValidationException e) {
             resp.setStatus(400);
             resp.getWriter().write(e.getMessage());

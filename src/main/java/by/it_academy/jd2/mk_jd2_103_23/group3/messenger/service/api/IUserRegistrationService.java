@@ -12,7 +12,7 @@ public interface IUserRegistrationService {
      * User registration validation;
      * @param user
      */
-    void save(UserCreateDTO user) throws ValidationException;
+    void save(UserCreateDTO user);
 
     /**
      * Getting userList;
@@ -20,23 +20,15 @@ public interface IUserRegistrationService {
      */
     List<User> getUser();
 
+    public void validationForSignUp(UserCreateDTO user);
+
+
 
     /**
      * Returns total count of registered users;
      * @return
      */
     long getCount();
-    void validateNameLanguage(String firstName, String lastName) throws ValidationException;
-    void validateNameCapitalization(String firstName, String lastName) throws ValidationException;
-    void validateUniqueLogin(String login, User user) throws ValidationException;
-    void validateLoginLength(String login) throws ValidationException;
-    void validateLoginNoSpace(String login) throws ValidationException;
-    void validatePasswordLength(String password) throws ValidationException;
-    void validatePasswordComplexity(String password) throws ValidationException;
-    void validateFormatBirthDate(String birthDay) throws ValidationException;
-    void validateBirthDate(String birthDate) throws ValidationException;
 
-    public LocalDate setLocalDateTimeFromString (String birthDate);
-
-
+    LocalDate setLocalDateTimeFromString(String strDate);
 }

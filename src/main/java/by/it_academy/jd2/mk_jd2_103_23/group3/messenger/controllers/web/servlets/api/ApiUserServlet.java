@@ -37,23 +37,20 @@ public class ApiUserServlet extends HttpServlet {
         String password = req.getParameter(PASSWORD_NAME);
         String firstName = req.getParameter(FIRST_NAME);
         String lastName = req.getParameter(LAST_NAME);
-        String birthDay= req.getParameter(BIRTH_DAY);
+        String birthDay = req.getParameter(BIRTH_DAY);
 
         UserCreateDTO user = new UserCreateDTO();
         user.setLogin(login);
         user.setPassword(password);
         user.setFirstName(firstName);
         user.setLastName(lastName);
-        if(!birthDay.isBlank()){
+        if (!birthDay.isBlank()) {
             user.setBirthday(birthDay);
         }
 
         try {
             userRegistrationService.save(user);
             req.getRequestDispatcher("/ui/signIn.jsp").forward(req, resp);
-        } catch (IllegalArgumentException e){
-            resp.setStatus(500);
-            resp.getWriter().write(e.getMessage());
         } catch (ValidationException e) {
             resp.setStatus(400);
             resp.getWriter().write(e.getMessage());

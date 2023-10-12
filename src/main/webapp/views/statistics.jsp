@@ -22,7 +22,6 @@
             </c:forEach>
             </tbody>
         </table>
-        <p><input type="button" onclick="location.href='${pageContext.request.contextPath}/';" value="index" /></p>
-
+        <p><input type="button" onclick="location.href='${pageContext.request.contextPath}/';" value="Home page" /></p>
     </body>
 </html>

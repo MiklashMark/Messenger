@@ -12,10 +12,10 @@ import java.util.UUID;
 public class UserDao implements IUserDao {
 
     private final String SAVE_ONE_USERS_IN_DB = "INSERT INTO messenger.users(\n" +
-            "\tuser_id, login, password, firstname, lastname, birthday, registrationdate, isadministrator)\n" +
+            "\tuser_id, login, password, firstname, lastname, birthday, registration_date, is_administrator)\n" +
             "\tVALUES (?, ?, ?, ?, ?, ?, ?, ?);";
 
-    private final String GET_ALL_USERS = "SELECT user_id, login, password, firstname, lastname, birthday, registrationdate, isadministrator\n" +
+    private final String GET_ALL_USERS = "SELECT user_id, login, password, firstname, lastname, birthday, registration_date, is_administrator\n" +
             "\tFROM messenger.users;";
 
     private final DataSource dataSource;
@@ -63,8 +63,8 @@ public class UserDao implements IUserDao {
                 item.setFirstName(rs.getString("firstname"));
                 item.setLastName(rs.getString("lastname"));
                 item.setBirthDay(rs.getTimestamp("birthday").toLocalDateTime().toLocalDate());
-                item.setAdministrator(rs.getBoolean("isadministrator"));
-                item.setRegistrationDate(rs.getTimestamp("registrationdate").toLocalDateTime());
+                item.setAdministrator(rs.getBoolean("is_administrator"));
+                item.setRegistrationDate(rs.getTimestamp("registration_date").toLocalDateTime());
 
                 data.add(item);
             }

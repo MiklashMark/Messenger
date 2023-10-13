@@ -10,15 +10,25 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class DefaultDataInitializer implements ServletContextListener {
+    private final UserDao userDao = UserDaoFactory.getInstance();
 
     // Add default admin initialization to listeners
     @Override
     public void contextInitialized(ServletContextEvent sce) {
-        UserDao userDao = UserDaoFactory.getInstance();
 
-        User admin = new User("admin", "admin", "admin", "admin",
-                LocalDate.of(1969, 1, 1), LocalDateTime.now(),true);
+        if (!isAdminExist()) {
+            User admin = new User("admin", "admin", "admin", "admin",
+                    LocalDate.of(1969, 1, 1), LocalDateTime.now(), true);
 
-        userDao.save(admin);
+            userDao.save(admin);
+        }
+    }
+
+    private boolean isAdminExist() {
+        boolean isAdminExist = userDao.getUsers().stream().anyMatch(u -> "admin".equalsIgnoreCase(u.getLogin())
+                && "admin".equalsIgnoreCase(u.getPassword()));
+        System.out.println(isAdminExist);
+        return isAdminExist;
+
     }
 }

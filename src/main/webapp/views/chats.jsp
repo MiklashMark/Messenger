@@ -14,15 +14,16 @@
     <h1>Incoming messages</h1>
 
         <p>Incoming messages for
-            <c:out value="${user.getLogin()}"/></br>
+            <c:out value="${user.getLogin()}"/></br></br>
 
             <c:forEach items="${requestScope.chat}"
                        var="message">
                 <tr>
                     <td width="20%">${message.from}</td>
-                    <td width="20%">${message.sendDate}</td>
-                    <td width="60%"><c:out value="${message.text}" escapeXml="true"/></td>
+                    <td width="20%">${message.time}</td>
+                    <td width="60%"><c:out value="${message.message}" escapeXml="true"/></td>
                 </tr>
+                <br>
             </c:forEach>
         </p>
         <p><input type="button" onclick="location.href='${pageContext.request.contextPath}/';" value="Home page" /></p>

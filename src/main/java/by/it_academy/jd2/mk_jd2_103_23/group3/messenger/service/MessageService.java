@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 public class MessageService implements IMessageService {
-    private IMessageDao messageDao;
+    private final IMessageDao messageDao;
 
     public MessageService(IMessageDao messageDao) {
         this.messageDao = messageDao;
@@ -40,7 +40,7 @@ public class MessageService implements IMessageService {
     @Override
     public long getCount(){
         return this.messageDao.getCount();
-    };
+    }
 
     @Override
     public List<Message> getUserMessages(User user) {

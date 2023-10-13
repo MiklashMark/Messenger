@@ -3,3 +3,4 @@
 /External Libraries/
 *.iml
 *.properties
+/src/main/resources/

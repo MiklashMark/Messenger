@@ -24,7 +24,7 @@ public class UiChatsServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         User user = (User) req.getSession().getAttribute("user");
         List<Message> messages = messageService.getUserMessages(user);
-
+        messages.forEach(System.out::println);
         req.setAttribute("chat", messages);
         req.getRequestDispatcher("/views/chats.jsp").forward(req, resp);
     }

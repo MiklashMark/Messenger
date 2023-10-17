@@ -4,9 +4,7 @@ import by.it_academy.jd2.mk_jd2_103_23.group3.messenger.core.dto.User;
 import by.it_academy.jd2.mk_jd2_103_23.group3.messenger.core.dto_n.UserCreateDTO;
 import by.it_academy.jd2.mk_jd2_103_23.group3.messenger.core.exceptions.ValidationException;
 import by.it_academy.jd2.mk_jd2_103_23.group3.messenger.dao.api.IUserDao;
-import by.it_academy.jd2.mk_jd2_103_23.group3.messenger.service.api.IMessageService;
 import by.it_academy.jd2.mk_jd2_103_23.group3.messenger.service.api.IUserRegistrationService;
-import by.it_academy.jd2.mk_jd2_103_23.group3.messenger.service.factory.MessageServiceFactory;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -16,8 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserRegistrationService implements IUserRegistrationService {
-    private IUserDao userDao;
-    private IMessageService messageService = MessageServiceFactory.getInstance();
+    private final IUserDao userDao;
 
     public UserRegistrationService(IUserDao userDao) {
         this.userDao = userDao;
@@ -47,10 +44,8 @@ public class UserRegistrationService implements IUserRegistrationService {
         entity.setRegistrationDate(LocalDateTime.now());
         entity.setAdministrator(false);
 
-
-        messageService.addRegisteredUser(entity);
+//        messageService.addRegisteredUser(entity);
         userDao.save(entity);
-
     }
 
     public void validationForSignUp(UserCreateDTO user) throws ValidationException {

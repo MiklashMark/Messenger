@@ -50,17 +50,17 @@ public class MessageDao implements IMessageDao {
     public List<Message> getUserMessages(User user) {
         String SELECT_USER_MESSAGES_QUERY = "select message_id, time, from_user, to_user, message\n" +
                 "from messenger.messages\n" +
-                "where from_user = ?;";
+                "where to_user = ?;";
         List<Message> messages = new ArrayList<>();
 
         try (Connection connection = dataSource.getConnection();
              PreparedStatement statement = connection.prepareStatement(SELECT_USER_MESSAGES_QUERY)) {
             statement.setString(1, getUUID(user));
-
+            statement.execute();
             try (ResultSet resultSet = statement.executeQuery()) {
                 while (resultSet.next()) {
                     Message message = new Message();
-                    message.setFrom(resultSet.getString("from_user"));
+                    message.setFrom(getUserByUUID(resultSet.getString("from_user")).getLogin());
                     message.setTo(resultSet.getString("to_user"));
                     message.setTime(resultSet.getTimestamp("time").toLocalDateTime());
                     message.setMessage(resultSet.getString("message"));
@@ -157,8 +157,43 @@ public class MessageDao implements IMessageDao {
         } catch (Exception e) {
             throw new IllegalStateException("Error receiving UUID by user", e);
         }
-        System.out.println(uUID);
         return uUID;
+    }
+
+    private User getUserByUUID(String uUID) {
+        String SELECT_USER_QUERY = "select user_id,\n" +
+                "       login,\n" +
+                "       password,\n" +
+                "       firstname,\n" +
+                "       lastname,\n" +
+                "       birthday,\n" +
+                "       registration_date,\n" +
+                "       is_administrator\n" +
+                "from messenger.users\n" +
+                "where user_id = ?;";
+        User user = new User();
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement statement = connection.prepareStatement(SELECT_USER_QUERY)) {
+            statement.setString(1, uUID);
+            statement.execute();
+            try (ResultSet resultSet = statement.executeQuery()) {
+                while (resultSet.next()) {
+                    user.setLogin(resultSet.getString("login"));
+                    user.setPassword(resultSet.getString("password"));
+                    user.setFirstName(resultSet.getString("firstname"));
+                    user.setLastName(resultSet.getString("lastname"));
+                    user.setBirthDay(resultSet.getDate("birthday").toLocalDate());
+                    user.setRegistrationDate(resultSet.getTimestamp("registration_date").toLocalDateTime());
+                    user.setAdministrator(resultSet.getBoolean("is_administrator"));
+                }
+            } catch (Exception e) {
+                throw new IllegalStateException("Error getting user information by UUID", e);
+            }
+
+        } catch (Exception e) {
+            throw new IllegalStateException("Error getting user information by UUID", e);
+        }
+        return user;
     }
 
 }

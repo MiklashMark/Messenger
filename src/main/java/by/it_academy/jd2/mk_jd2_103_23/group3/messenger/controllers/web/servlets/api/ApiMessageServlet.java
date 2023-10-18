@@ -1,7 +1,7 @@
 package by.it_academy.jd2.mk_jd2_103_23.group3.messenger.controllers.web.servlets.api;
 
-import by.it_academy.jd2.mk_jd2_103_23.group3.messenger.core.dto_n.MessageCreateDTO;
-import by.it_academy.jd2.mk_jd2_103_23.group3.messenger.core.dto.User;
+import by.it_academy.jd2.mk_jd2_103_23.group3.messenger.core.dto.MessageCreateDTO;
+import by.it_academy.jd2.mk_jd2_103_23.group3.messenger.dao.entity.User;
 import by.it_academy.jd2.mk_jd2_103_23.group3.messenger.core.exceptions.MessageException;
 import by.it_academy.jd2.mk_jd2_103_23.group3.messenger.service.api.IMessageService;
 import by.it_academy.jd2.mk_jd2_103_23.group3.messenger.service.factory.MessageServiceFactory;

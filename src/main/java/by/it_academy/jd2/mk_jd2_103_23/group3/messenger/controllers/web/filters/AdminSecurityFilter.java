@@ -1,7 +1,7 @@
 package by.it_academy.jd2.mk_jd2_103_23.group3.messenger.controllers.web.filters;
 
 
-import by.it_academy.jd2.mk_jd2_103_23.group3.messenger.core.dto.User;
+import by.it_academy.jd2.mk_jd2_103_23.group3.messenger.dao.entity.User;
 import jakarta.servlet.*;
 import jakarta.servlet.annotation.WebFilter;
 import jakarta.servlet.http.HttpServletRequest;

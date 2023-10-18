@@ -1,7 +1,7 @@
 package by.it_academy.jd2.mk_jd2_103_23.group3.messenger.dao;
 
-import by.it_academy.jd2.mk_jd2_103_23.group3.messenger.core.dto.Message;
-import by.it_academy.jd2.mk_jd2_103_23.group3.messenger.core.dto.User;
+import by.it_academy.jd2.mk_jd2_103_23.group3.messenger.dao.entity.Message;
+import by.it_academy.jd2.mk_jd2_103_23.group3.messenger.dao.entity.User;
 import by.it_academy.jd2.mk_jd2_103_23.group3.messenger.dao.api.IMessageDao;
 
 import javax.sql.DataSource;

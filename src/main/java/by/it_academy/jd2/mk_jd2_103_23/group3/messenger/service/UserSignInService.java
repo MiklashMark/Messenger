@@ -1,8 +1,8 @@
 package by.it_academy.jd2.mk_jd2_103_23.group3.messenger.service;
 
-import by.it_academy.jd2.mk_jd2_103_23.group3.messenger.core.dto.Message;
-import by.it_academy.jd2.mk_jd2_103_23.group3.messenger.core.dto.User;
-import by.it_academy.jd2.mk_jd2_103_23.group3.messenger.core.dto_n.UserLoginDTO;
+import by.it_academy.jd2.mk_jd2_103_23.group3.messenger.dao.entity.Message;
+import by.it_academy.jd2.mk_jd2_103_23.group3.messenger.dao.entity.User;
+import by.it_academy.jd2.mk_jd2_103_23.group3.messenger.core.dto.UserLoginDTO;
 import by.it_academy.jd2.mk_jd2_103_23.group3.messenger.core.exceptions.SignInException;
 import by.it_academy.jd2.mk_jd2_103_23.group3.messenger.dao.api.IUserDao;
 import by.it_academy.jd2.mk_jd2_103_23.group3.messenger.service.api.IMessageService;
